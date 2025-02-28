@@ -1,0 +1,84 @@
+Sl. No.,Name,PAN,Designation,Year of Appointment,Nature of Appointment,Department
+1,Dr Vijayalakshmi Akella,AETPA6013Q,Professor & Head,2011,Permanent,CV
+2,Dr.Arekal Vijay,AIUPV3609Professor,2011,Permanent,CV
+3,M Veerendra Kumar,AAXPV7682E,Associate Professor,2012,Permanent,CV
+4,Dr Vyshali,AGPPV9333A,Associate Professor,2012,Permanent,CV
+5,Sushma M,GFPPS3116K,Assistant Professor,2015,Permanent,CV
+6,Naveena M P,BQJPP1667C,Assistant Professor,2017,Permanent,CV
+7,Manjunath B,CNUPM0337B,Assistant Professor,2017,Permanent,CV
+8,Prashanth M,CGRPM3136N,Assistant Professor,2017,Permanent,CV
+9,Sasha Rai P,BNGPR0622H,Assistant Professor,2018,Permanent,CV
+10,Shashi Prasad N,FCNPS5332B,Assistant Professor,2018,Permanent,CV
+11,Amrutha Dhiraj,AQDPA6718J,Assistant Professor,2019,Permanent,CV
+12,Veena R,BUNPV77830,Assistant Professor,2020,Permanent,CV
+13,Dr.Vandana Jha,AGJPJ4973E,Professor & Head,2018,Permanent,CS
+14,Mr.Santosh Kumar J,AMEPJ2291G,Associate Professor,2013,Permanent,CS
+15,Mr.Sandeep H,CPBPS8015R,Associate Professor,2012,Permanent,CS
+16,Mrs.Deepa Yogish,AENPY2398L,Assistant Professor,2018,Permanent,CS
+17,Mr. Pradeep K R,BDDPP8645R,Assistant Professor,2019,Permanent,CS
+18,Mr.Santhosh Kumar S,EBPPS5545L,Assistant Professor,2013,Permanent,CS
+19,Mr.Deepak M. D,BFGPD7649L,Assistant Professor,2011,Permanent,CS
+20,Mr.Ugrananda Channabasava,ASKPC2547A,Assistant Professor,2012,Permanent,CS
+21,Mrs.Sandhya.A. Kulkarni,BYWPK3365F,Assistant Professor,2013,Permanent,CS
+22,Mrs.Amitha S,CCTPS9272F,Assistant Professor,2013,Permanent,CS
+23,Mr.Ashoka S,ALQPA0575K,Assistant Professor,2014,Permanent,CS
+24,Mrs.Megha J,BCWPM7834B,Assistant Professor,2015,Permanent,CS
+25,Mrs.Gargi N,BRZPG6990A,Assistant Professor,2015,Permanent,CS
+26,Mrs.R.S.Geethanjali,BDBPG4866P,Assistant Professor,2017,Permanent,CS
+27,Mrs.K V Shalini,DJSPS9201P,Assistant Professor,2019,Permanent,CS
+28,Mrs.Swathi Darla,ASYPD0914G,Assistant Professor,2017,Permanent,CS
+29,Mrs. Swetha P,CSTPS6855C,Assistant Professor,2020,Permanent,CS
+30,Mrs. Rashmi B H,BLIPR896B,Assistant Professor,2021,Permanent,CS
+31,Dr.Girish V.Attimarad,AEOPA8923N,Professor & Head,2016,Permanent,EC
+32,Dr.Karthik P,ATVPP5505B,Professor,2013,Permanent,EC
+33,Dr.Dushyantha N D,AIPPD6738F,Professor,2017,Permanent,EC
+34,Dr. K. Senthil Babu,BMRPS1349N,Professor,2019,Permanent,EC
+35,Mr.Sanjay Baburao Nayak,AASPN0632P,Associate Professor,2013,Permanent,EC
+36,Mr.Manu D K,AMJPD0996K,Associate Professor,2011,Permanent,EC
+37,Sasindran Madhava Prabhu,AARPM8764C,Associate Professor,2019,Permanent,EC
+38,Mr.Gopalkrishnamurthy C R,AJXPG8705E,Assistant Professor,2011,Permanent,EC
+39,Mrs.Shanthala G M,BJXPS3554A,Assistant Professor,2012,Permanent,EC
+40,Mr.Ravikiran Ananthasubbaraya,BADPR6478R,Assistant Professor,2011,Permanent,EC
+41,Ms.Shalini Shravan,AGCPJ6833A,Assistant Professor,2012,Permanent,EC
+42,Ms.Renuka V Tali,BHRPR0424E,Assistant Professor,2013,Permanent,EC
+43,Mr.Puneeth S,BGSPP4875M,Assistant Professor,2013,Permanent,EC
+44,Ms.Gunasheela T.J,AOYPG1166P,Assistant Professor,2013,Permanent,EC
+45,Mr.Vinay R,AUHPR9454N,Assistant Professor,2013,Permanent,EC
+46,Mr.Syed waseem Tabraiz,AMTPT7196B,Assistant Professor,2014,Permanent,EC
+47,Ms.Shilpa A.P,FQHPS8946H,Assistant Professor,2017,Permanent,EC
+48,Dr.Kishore M,AQGPM7368B,Assistant Professor,2019,Permanent,EC
+49,Ms. Vinutha Srikanth,ADYPV8279P,Associate Professor & Head,2019,Permanent,EE
+50,Mr. Arun Kumar M,AHJPA3133G,Associate Professor,2018,Permanent,EC
+51,Ms. Ramya.K.R,CCMPK8344M,Associate Professor,2011,Permanent,EE
+52,Ms. Manjula.B.G,APZPB4487N,Associate Professor,2012,Permanent,EE
+53,Ms. Hema Priya M,AMVPR7942R,Assistant Professor,2019,Permanent,EE
+54,Ms. Shruti V Joshi,AKGPJ5538G,Assistant Professor,2018,Permanent,EE
+55,Ms.Tejaswini G V,AGHPV2515J,Assistant Professor,2018,Permanent,EE
+56,Ms. Prathiksha,CSMPP0043E,Assistant Professor,2019,Permanent,EE
+57,Dr. K Ramanarasimha,AECPR6639G,Principal/Director,2019,Permanent,ME
+58,Dr. Balaji B,AJRPB4121B,Professor & Head,2019,Permanent,ME
+59,Dr.Jyothi P.N,AKZPP0149C,Professor,2010,Permanent,ME
+60,Mr. Nagraj M S,AAZPN1391G,Associate Professor,2019,Permanent,ME
+61,Mr. Abhishek M R,ANKPA3538N,Associate Professor,2019,Permanent,ME
+62,Mr. Harsha J,AIXPH1349A,Assistant Professor,2014,Permanent,ME
+63 Mr. Prashanth J ALAPJ9137C Assistant Professor 2013 Permanent ME
+64 Mr. Akashdeep B N AUYPB8443N Assistant Professor 2013 Permanent ME
+65 Mr. Santosh Kumar K J DRHPS4884R Assistant Professor 2013 Permanent ME
+66 Mr. Vijay Chandan AIGPV2856D Assistant Professor 2018 Permanent ME
+67 Mr. Vinod A AKHPV0485H Assistant Professor 2014 Permanent ME
+68 Mr. Prabhu K S BTDPP9938D Assistant Professor 2018 Permanent ME
+69 Mr. Nishanth Nag CEBPD2249K Assistant Professor 2018 Permanent ME
+70 Dr. Gopal BMGPV273N Professor & Head 2021 Permanent MBA
+71 Roopa Balavenu AL1PB6455F Assistant Professor 2020 Permanent MBA
+72 Sreedhar. N BNQPS0973J Assistant Professor 2020 Permanent MBA
+73 Pradeep BNVPP8684C Assistant Professor 2013 Permanent MBA
+74 V. Vidya Shree BMGPV273N Assistant Professor 2020 Permanent MBA
+75 Dr.C.Vasudev AFJPV1695J Professor & Head 2013 Permanent BS & H
+76 Dr. Remya P Narayan EEPPP4402G Assistant Professor 2020 Permanent BS & H
+77 Mrs.Vinutha S.V AMWPV3887G Assistant Professor 2011 Permanent BS & H
+78 Mr.Manoharkumar K.N. BIAPM8111R Assistant Professor 2015 Permanent BS & H
+79 Mrs. Nagarathna T.K. ATMPN0939L Assistant Professor 2016 Permanent BS & H
+80 Ms.Divya R BDBPD1309N Assistant Professor 2017 Permanent BS & H
+81 Mrs.Swarna S CIPPS1078F Assistant Professor 2011 Permanent BS & H
+82 Ms.Kusuma M DHQPK5346K Assistant Professor 2012 Permanent BS & H
+83 Mrs. Pavithra J BMRPP2502A Assistant Professor 2015 Permanent BS & H
