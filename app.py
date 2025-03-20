@@ -13,8 +13,8 @@ st.set_page_config(page_title="🎓𝙲𝚊𝚖𝚙𝚞𝚜𝙼𝚊𝚝𝚎", la
 genai.configure(api_key="AIzaSyChUzmOrRlZRCtmY7nv90suM86bcUj1z58")  # Replace with your actual key
 
 # Load FAISS index & text mappings
-index = faiss.read_index("dataset/faiss_index_cleaned.bin")
-with open("dataset/text_mappings_cleaned.json", "r", encoding="utf-8") as f:
+index = faiss.read_index("faiss_index_cleaned.bin")
+with open("text_mappings_cleaned.json", "r", encoding="utf-8") as f:
     text_list = json.load(f)
 
 # Load embedding model
