@@ -3,3 +3,5 @@ faiss-cpu
 numpy
 pandas
 requests
+SpeechRecognition
+pyaudio
