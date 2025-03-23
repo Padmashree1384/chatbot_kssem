@@ -1,0 +1,23 @@
+# Web Scraping  
+requests  
+beautifulsoup4  
+
+# Jupyter Notebook & Utilities  
+notebook  
+jupytext  
+ipykernel  # Ensures Jupyter runs in the correct Python environment  
+
+# Gemini API  
+google-generativeai  
+
+# Data Handling & Processing  
+pandas  
+tqdm  # Progress bar for long-running tasks  
+
+# Text Processing (Optional, if needed)  
+nltk  # Natural Language Toolkit for text cleaning  
+
+# FAISS (CPU version)  
+faiss-cpu
+
+sentence-transformers
