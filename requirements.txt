@@ -4,4 +4,4 @@ faiss-cpu
 numpy
 sentence-transformers
 google-generativeai
-pyaudio
+pydub
