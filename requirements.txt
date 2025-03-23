@@ -1,7 +1,7 @@
 streamlit
+pyaudio
+speechrecognition
 faiss-cpu
 numpy
-pandas
-requests
-SpeechRecognition
-pyaudio
+sentence-transformers
+google-generativeai
