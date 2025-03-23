@@ -1,6 +1,6 @@
 streamlit
-pyaudio
 speechrecognition
+pyaudio==0.2.13
 faiss-cpu
 numpy
 sentence-transformers
