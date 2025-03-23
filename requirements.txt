@@ -21,3 +21,4 @@ nltk  # Natural Language Toolkit for text cleaning
 faiss-cpu
 
 sentence-transformers
+SpeechRecognition
