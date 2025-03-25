@@ -1,37 +1,48 @@
 import streamlit as st
 import base64
-import google.generativeai as genai
+import openai
 import faiss
 import numpy as np
 import json
 from sentence_transformers import SentenceTransformer
 import speech_recognition as sr
+import os
+import hashlib
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+AZURE_OPENAI_API_KEY1 = os.getenv("AZURE_OPENAI_API_KEY1")
+AZURE_OPENAI_API_KEY2 = os.getenv("AZURE_OPENAI_API_KEY2")
+AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
+AZURE_DEPLOYMENT_NAME = os.getenv("AZURE_DEPLOYMENT_NAME")
+
+
 
 # Streamlit UI setup
 st.set_page_config(page_title="🎓CampusMate - KSSEM Assistant", layout="wide")
 
-# Configure Gemini API (Use environment variables instead of hardcoding API keys)
-genai.configure(api_key="AIzaSyChUzmOrRlZRCtmY7nv90suM86bcUj1z58")  # Replace with a secure key method
 
 # Load FAISS index & text mappings
-index = faiss.read_index("faiss_index_cleaned.bin")
-with open("text_mappings_cleaned.json", "r", encoding="utf-8") as f:
+index = faiss.read_index("dataset/faiss_index_cleaned.bin")
+with open("dataset/text_mappings_cleaned.json", "r", encoding="utf-8") as f:
     text_list = json.load(f)
 
 # Load embedding model
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
 # Function to retrieve relevant chunks using FAISS
-def retrieve_relevant_chunks(query, top_k=10):
+def retrieve_relevant_chunks(query, top_k=5):
     query_vector = np.array([model.encode(query)], dtype=np.float32)
     distances, indices = index.search(query_vector, top_k)
     return [text_list[i] for i in indices[0] if i < len(text_list)]
 
 # Function to query Gemini API
-def query_gemini(user_query):
+def query_azure(user_query):
     context = "\n\n".join(retrieve_relevant_chunks(user_query))
     prompt = f"""You are an AI chatbot providing accurate information about an educational institution.
-    Use the context below to answer the user's question:
+    Use the context below to answer the user's question:
+
     
     ### Context:
     {context}
@@ -40,11 +51,117 @@ def query_gemini(user_query):
     {user_query}
     
     ### Answer:"""
+    client = openai.AzureOpenAI(
+        api_key=AZURE_OPENAI_API_KEY2,
+        azure_endpoint=AZURE_OPENAI_ENDPOINT,
+        api_version="2024-02-01"
+    )
     
-    model = genai.GenerativeModel("gemini-1.5-pro",generation_config={"temperature": 0.3})
+    response = client.chat.completions.create(
+        model=AZURE_DEPLOYMENT_NAME,
+        messages=[{"role": "system", "content": "You are a helpful assistant."},
+                  {"role": "user", "content": prompt}
+                ],
+                temperature=0.1,
+                max_tokens=300
 
-    response = model.generate_content(prompt)
-    return response.text if response and response.text else "❌ I couldn't find an answer. Try rephrasing!"
+    )
+    
+    return response.choices[0].message.content if response.choices else "❌ I couldn't find an answer. Try rephrasing!"
+
+
+# User Authentication
+users_db = "users.json"
+
+def load_users():
+    if os.path.exists(users_db):
+        with open(users_db, "r") as f:
+            return json.load(f)
+    return {}
+
+def save_users(users):
+    with open(users_db, "w") as f:
+        json.dump(users, f)
+
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
+
+users = load_users()
+
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+    st.session_state.username = None
+
+# Rotating KSSEM Logo
+logo_path = "processed_logo.png"
+st.sidebar.markdown(
+    f"""
+    <style>
+        @keyframes rotate-earth {{
+            0% {{ transform: rotateY(0deg); }}
+            100% {{ transform: rotateY(360deg); }}
+        }}
+        .rotating-logo {{
+            animation: rotate-earth 5s linear infinite;
+            display: block;
+            margin: auto;
+            width: 130px;
+        }}
+    </style>
+    <img src="data:image/jpeg;base64,{base64.b64encode(open(logo_path, 'rb').read()).decode()}" class="rotating-logo">
+    """,
+    unsafe_allow_html=True
+)
+
+# Login and Signup UI
+# Login and Signup UI
+if not st.session_state.authenticated:
+    option = st.sidebar.radio("Login or Signup", ["Login", "Sign Up", "Continue as Guest"])
+    
+    if option == "Login":
+        st.sidebar.subheader("Login")
+        username = st.sidebar.text_input("Username")
+        password = st.sidebar.text_input("Password", type="password")
+        if st.sidebar.button("Login"):
+            if username in users and users[username] == hash_password(password):
+                st.session_state.authenticated = True
+                st.session_state.username = username
+                st.session_state.messages = users.get(username + "_history", [])
+                st.sidebar.success("Logged in successfully!")
+                st.rerun()
+            else:
+                st.sidebar.error("Invalid username or password")
+    
+    elif option == "Sign Up":
+        st.sidebar.subheader("Create an Account")
+        new_username = st.sidebar.text_input("New Username")
+        new_password = st.sidebar.text_input("New Password", type="password")
+        if st.sidebar.button("Sign Up"):
+            if new_username in users:
+                st.sidebar.error("Username already exists!")
+            else:
+                users[new_username] = hash_password(new_password)
+                users[new_username + "_history"] = []
+                save_users(users)
+                st.sidebar.success("Account created successfully! Please login.")
+    
+    elif option == "Continue as Guest":
+        st.session_state.authenticated = True
+        st.session_state.username = "Guest"
+        st.session_state.messages = []
+        st.sidebar.info("You are using the chatbot as a guest. Chat history will not be saved.")
+        st.rerun()
+
+else:
+    # Logout option
+    if st.sidebar.button("Logout"):
+        if st.session_state.username != "Guest":
+            users[st.session_state.username + "_history"] = st.session_state.messages
+            save_users(users)
+        st.session_state.authenticated = False
+        st.session_state.username = None
+        st.session_state.messages = []
+        st.rerun()
 
 # Set KSSEM logo as background
 def set_background(image_path):
@@ -135,7 +252,7 @@ def voice_search():
     with sr.Microphone() as source:
         st.info("Listening... Speak now!")
         try:
-            audio = recognizer.listen(source, timeout=10)
+            audio = recognizer.listen(source, timeout=5)
             text = recognizer.recognize_google(audio)
             st.success(f"You said: {text}")
             return text
@@ -163,6 +280,8 @@ for message in st.session_state.messages:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Move text input and voice search to the bottom
+user_query = None  # Ensure it is defined
+st.markdown("""<div style='position: fixed; bottom: 10px; width: 100%;'>""", unsafe_allow_html=True)
 col1, col2 = st.columns([10, 1])
 
 with col1:
@@ -177,7 +296,7 @@ st.markdown("""</div>""", unsafe_allow_html=True)
 
 if user_query:
     st.session_state.messages.append({"role": "user", "content": user_query})
-    response = query_gemini(user_query)
+    response = query_azure(user_query)
     st.session_state.messages.append({"role": "assistant", "content": response})
     st.rerun()
 
